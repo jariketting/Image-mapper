@@ -751,7 +751,8 @@ var summerHtmlImageMapCreator = (function() {
         this._attributes = {
             href : '',
             alt : '',
-            title : ''    
+            title : '',
+            id : ''
         };
 
         if (attributes) {
@@ -792,6 +793,7 @@ var summerHtmlImageMapCreator = (function() {
         HREF : / href="([\S\s]+?)"/,
         ALT : / alt="([\S\s]+?)"/,
         TITLE : / title="([\S\s]+?)"/,
+        ID : / title="([\S\s]+?)"/,
         DELIMETER : / ?, ?/
     };
     Area.HTML_NAMES_TO_AREA_NAMES = {
@@ -799,7 +801,7 @@ var summerHtmlImageMapCreator = (function() {
         circle : 'circle',
         poly : 'polygon'
     };
-    Area.ATTRIBUTES_NAMES = ['HREF', 'ALT', 'TITLE'];
+    Area.ATTRIBUTES_NAMES = ['HREF', 'ALT', 'TITLE', 'ID'];
     
     /**
      * This method should be implemented for child-classes 
@@ -912,6 +914,7 @@ var summerHtmlImageMapCreator = (function() {
         this._attributes.href = attributes.href;
         this._attributes.alt = attributes.alt;
         this._attributes.title = attributes.title;
+        this._attributes.id = attributes.id;
     };
     
     /**
@@ -1322,6 +1325,7 @@ var summerHtmlImageMapCreator = (function() {
             + (this._attributes.href ? ' href="' + this._attributes.href + '"' : '')
             + (this._attributes.alt ? ' alt="' + this._attributes.alt + '"' : '')
             + (this._attributes.title ? ' title="' + this._attributes.title + '"' : '')
+            + (this._attributes.id ? ' id="' + this._attributes.id + '"' : '')
             + ' />';
     };
 
@@ -1703,6 +1707,7 @@ var summerHtmlImageMapCreator = (function() {
             + (this._attributes.href ? ' href="' + this._attributes.href + '"' : '')
             + (this._attributes.alt ? ' alt="' + this._attributes.alt + '"' : '')
             + (this._attributes.title ? ' title="' + this._attributes.title + '"' : '')
+            + (this._attributes.id ? ' id="' + this._attributes.id + '"' : '')
             + ' />';
     };
 
@@ -2075,6 +2080,7 @@ var summerHtmlImageMapCreator = (function() {
             + (this._attributes.href ? ' href="' + this._attributes.href + '"' : '')
             + (this._attributes.alt ? ' alt="' + this._attributes.alt + '"' : '')
             + (this._attributes.title ? ' title="' + this._attributes.title + '"' : '')
+            + (this._attributes.id ? ' id="' + this._attributes.id + '"' : '')
             + ' />';
     };
 
@@ -2293,6 +2299,7 @@ var summerHtmlImageMapCreator = (function() {
             href_attr = utils.id('href_attr'),
             alt_attr = utils.id('alt_attr'),
             title_attr = utils.id('title_attr'),
+            id_attr = utils.id('id_attr'),
             save_button = utils.id('save_details'),
             close_button = form.querySelector('.close_button'),
             sections = form.querySelectorAll('p'),
@@ -2314,6 +2321,7 @@ var summerHtmlImageMapCreator = (function() {
                 href : href_attr.value,
                 alt : alt_attr.value,
                 title : title_attr.value,
+                id : id_attr.value,
             });
             
             obj[obj.href ? 'setStyleOfElementWithHref' : 'unsetStyleOfElementWithHref']();
@@ -2357,10 +2365,12 @@ var summerHtmlImageMapCreator = (function() {
         href_attr.addEventListener('keydown', function(e) { e.stopPropagation(); }, false);
         alt_attr.addEventListener('keydown', function(e) { e.stopPropagation(); }, false);
         title_attr.addEventListener('keydown', function(e) { e.stopPropagation(); }, false);
+        id_attr.addEventListener('keydown', function(e) { e.stopPropagation(); }, false);
         
         href_attr.addEventListener('change', change, false);
         alt_attr.addEventListener('change', change, false);
         title_attr.addEventListener('change', change, false);
+        id_attr.addEventListener('change', change, false);
         
         close_button.addEventListener('click', unload, false);
         
@@ -2380,6 +2390,7 @@ var summerHtmlImageMapCreator = (function() {
                 href_attr.value = object.href ? object.href : '';
                 alt_attr.value = object.alt ? object.alt : '';
                 title_attr.value = object.title ? object.title : '';
+                id_attr.value = object.title ? object.title : '';
                 utils.show(form);
                 if (new_x && new_y) {
                     x = new_x;
