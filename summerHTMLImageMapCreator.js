@@ -617,7 +617,7 @@ var summerHtmlImageMapCreator = (function() {
                     if (!state.areas.length) {
                         return '0 objects';
                     }
-                    html_code += utils.encode('<img src="' + state.image.filename + '" alt="" usemap="#map" />') +
+                    html_code += utils.encode('<img id="" src="' + state.image.filename + '" alt="" usemap="#map" />') +
                         '<br />' + utils.encode('<map name="map">') + '<br />';
                     utils.foreachReverse(state.areas, function(x) {
                         html_code += '&nbsp;&nbsp;&nbsp;&nbsp;' + utils.encode(x.toHTMLMapElementString()) + '<br />';
