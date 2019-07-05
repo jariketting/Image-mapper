@@ -1316,7 +1316,7 @@ var summerHtmlImageMapCreator = (function() {
         var x2 = this._coords.x + this._coords.width,
             y2 = this._coords.y + this._coords.height;
             
-        return '<area shape="rect" coords="' // TODO: use template engine
+        return '<area shape="rect" href="" coords="' // TODO: use template engine
             + this._coords.x + ', '
             + this._coords.y + ', '
             + x2 + ', '
@@ -1699,7 +1699,7 @@ var summerHtmlImageMapCreator = (function() {
      * @returns {string}
      */
     Circle.prototype.toHTMLMapElementString = function() {
-        return '<area shape="circle" coords="'
+        return '<area shape="circle" href="" coords="'
             + this._coords.cx + ', '
             + this._coords.cy + ', '
             + this._coords.radius
@@ -2074,7 +2074,7 @@ var summerHtmlImageMapCreator = (function() {
             return item.x + ', ' + item.y;
         }).join(', ');
         
-        return '<area shape="poly" coords="'
+        return '<area shape="poly" href="" coords="'
             + str
             + '"'
             + (this._attributes.href ? ' href="' + this._attributes.href + '"' : '')
